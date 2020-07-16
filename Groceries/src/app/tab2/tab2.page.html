@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{titleOfPage}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<!-- List of Sliding Items -->
+<ion-list>
+  <ion-item-sliding *ngFor="let groceryItem of groceryItems; let i = index">
+    <ion-item>
+      <ion-label>{{groceryItem.itemName}}</ion-label>
+      <p>{{groceryItem.itemCount}}</p>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option (click)="editGroceryItem( groceryItem, i )"><ion-icon name="create-outline"></ion-icon>Edit</ion-item-option>
+      <ion-item-option (click)="removeGroceryItem( groceryItem, i )"><ion-icon name="trash-outline"></ion-icon>Remove</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+<!-- The Add button on right bottom corner -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addGroceryItem()" >
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>
